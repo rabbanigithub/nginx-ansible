@@ -23,7 +23,7 @@
       name: nginx
       state: started
       enabled: true
-  - name: Allow service on UFW
+  - name: Allow HTTP service on UFW
     ufw:
       rule: allow
       port: 80
