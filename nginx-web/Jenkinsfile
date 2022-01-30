@@ -16,7 +16,6 @@ node {
         def mvWebFiles = 'sudo mv /tmp/tmpWebFiles/* /var/www/html/'
         def webFiles  = './html-web/* '
 	def rmTmpDir = 'sudo rm -fr /tmp/tmpWebFiles'
-
         sshagent(['6a534226-e2cb-41a5-bd5b-24427216b285']) {
             sh "ssh -o StrictHostKeyChecking=no vagrant@10.11.12.90 ${createTmpDir}"
             sh "scp -o StrictHostKeyChecking=no ${webFiles} vagrant@10.11.12.90:${tmpFileDir}"
