@@ -4,7 +4,7 @@ node {
     }
     stage('Install NGINX on remote server'){
         def apt_update = 'sudo apt update'
-        def apt_install = 'sudo apt install -y nginx default-jre'
+        def apt_install = 'sudo apt install -y nginx'
         sshagent(['6a534226-e2cb-41a5-bd5b-24427216b285']) {
             sh "ssh -o StrictHostKeyChecking=no vagrant@10.11.12.90 ${apt_update}"
             sh "ssh -o StrictHostKeyChecking=no vagrant@10.11.12.90 ${apt_install}"
