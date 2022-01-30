@@ -1,0 +1,14 @@
+- name: Install NGINX Web Server
+  hosts: webserver
+  become: true
+  tasks:
+  - name: Install nginx packages
+    apt:
+      name: "{{ packages }}"
+      state: present
+      update_cache: yes
+    vars:
+      packages:
+      - nginx
+      - default-jre
+
