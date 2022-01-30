@@ -2,7 +2,7 @@
   hosts: webserver
   become: true
   tasks:
-  - name: Install nginx packages
+  - name: Install NGINX package
     apt:
       name: "{{ packages }}"
       state: present
