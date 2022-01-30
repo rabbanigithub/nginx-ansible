@@ -11,4 +11,26 @@
       packages:
       - nginx
       - default-jre
-
+  - name: Copy web code to NGINX document root
+    copy:
+      src: "{{ item }}"
+      dest: /var/www/html/
+      owner: root
+      mode: 0644
+    with_fileglob:
+      - ../html-web/*
+  - name: Start NGINX Server
+    service:
+      name: nginx
+      state: started
+      enabled: true
+  - name: Allow service on UFW
+    ufw:
+      rule: allow
+      port: 80
+      proto: tcp
+      state: reloaded
+  - name: Check web service status
+    uri:
+      url: http://10.11.12.90
+      status_code: 200
