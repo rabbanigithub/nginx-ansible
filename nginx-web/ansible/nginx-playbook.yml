@@ -10,7 +10,6 @@
     vars:
       packages:
       - nginx
-      - default-jre
   - name: Copy web code to NGINX document root
     copy:
       src: "{{ item }}"
