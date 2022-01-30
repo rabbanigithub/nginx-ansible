@@ -14,12 +14,14 @@ node {
         def createTmpDir = 'mkdir /tmp/tmpWebFiles'
         def tmpFileDir = '/tmp/tmpWebFiles'
         def mvWebFiles = 'sudo mv /tmp/tmpWebFiles/* /var/www/html/'
-        def web_files  = './html-web/* '
+        def webFiles  = './html-web/* '
+	def rmTmpDir = 'rm -fr ${tmpFileDir}'
 
         sshagent(['6a534226-e2cb-41a5-bd5b-24427216b285']) {
             sh "ssh -o StrictHostKeyChecking=no vagrant@10.11.12.90 ${createTmpDir}"
-            sh "scp -o StrictHostKeyChecking=no ${web_files} vagrant@10.11.12.90:${tmpFileDir}"
+            sh "scp -o StrictHostKeyChecking=no ${webFiles} vagrant@10.11.12.90:${tmpFileDir}"
             sh "ssh -o StrictHostKeyChecking=no vagrant@10.11.12.90 ${mvWebFiles}"
+            sh "ssh -o StrictHostKeyChecking=no vagrant@10.11.12.90 ${rmTmpDir}"
         }
     }
     stage('Start and enable NGINX server'){
