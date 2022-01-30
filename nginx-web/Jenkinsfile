@@ -32,5 +32,10 @@ node {
             sh "ssh -o StrictHostKeyChecking=no vagrant@10.11.12.90 ${enableNGINX}"
         }
     }
+    stage('Check web service status'){
+        def checkUrl = 'curl -I http://10.11.12.90'
+        sshagent(['6a534226-e2cb-41a5-bd5b-24427216b285']) {
+            sh "ssh -o StrictHostKeyChecking=no vagrant@10.11.12.90 ${checkUrl}"
+        }
+    }
 }
-
