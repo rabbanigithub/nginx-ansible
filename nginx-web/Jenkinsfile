@@ -1,6 +1,6 @@
 node {
     stage('SCM Checkout'){
-        git branch: 'main', url: 'https://github.com/rabbanigithub/mm.git'
+        git branch: 'master', url: 'https://github.com/rabbanigithub/mm.git'
     }
     stage('Install and start NGINX on remote server'){
         def apt_update = 'sudo apt update'
