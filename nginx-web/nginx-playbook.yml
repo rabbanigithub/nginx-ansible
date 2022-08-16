@@ -17,7 +17,7 @@
       owner: root
       mode: 0644
     with_fileglob:
-      - ../html-web/*
+      - ./html-web/*
   - name: Start NGINX Server
     service:
       name: nginx
